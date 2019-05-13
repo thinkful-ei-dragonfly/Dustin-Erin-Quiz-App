@@ -53,6 +53,7 @@ class Quiz {
   //this works
   endGame() {
     this.active = false;
+    this.score = 0;
   }
  //this works
   updateScore() {
