@@ -24,12 +24,20 @@ class Quiz {
     this.active = true;
     const trivia = new TriviaApi();
     trivia.getQuestions().then(res => {
-        res.results.forEach(item => this.unasked.push(item));
+        res.results.forEach(item => {
+          let question = new Question();
+          question.text = item.question;
+          question.answers = [item.correct_answer, ...item.incorrect_answers];
+          question.correctAnswer = item.correct_answer;
+          question.userAnswer = '';
+
+          this.unasked.push(question);
+        });
       })
       .catch((err) => {
         console.log(err);
-      })
-  }
+      });
+  };
   //this works
   moveQuestion() {
     this.asked.unshift(this.unasked.shift());
