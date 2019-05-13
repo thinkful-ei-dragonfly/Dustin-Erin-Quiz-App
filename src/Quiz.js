@@ -1,4 +1,5 @@
 import Question from './Question';
+import TriviaApi from './TriviaApi';
 
 class Quiz {
 
@@ -18,11 +19,18 @@ class Quiz {
   }
 
   startGame() {
+    this.asked = [];
     this.active = true;
-    //placeholder- getAPI
+    TriviaApi.getQuestions() 
+      .then(res => {
+        res.results.forEach(item => this.unasked.push(item));
+      })
+      .catch((err) => {
+        console.log(err);
+      })
   }
   moveQuestion() {
-    this.asked.push(this.unasked.shift());
+    this.asked.unshift(this.unasked.shift());
     console.log(this.asked);
     console.log(this.unasked);
   }
@@ -33,17 +41,13 @@ class Quiz {
   }
   endGame() {
     this.active = false;
+
   }
 
-  // updateScore() {
-  //   if (Question.userAnswer && this.userAnswer === this.correctAnswer) {
-  //     return 1;
-  //   } else if (this.userAnswer && this.userAnswer !== this.correctAnswer) {
-  //     return 0;
-  //   } else {
-  //     return -1;
-  //   }
-  // }
+  updateScore() {
+    if (this.asked[0].userAnswer === this.asked[0].correctAnswer) {
+      this.score ++;
+  }
 
 }
 
