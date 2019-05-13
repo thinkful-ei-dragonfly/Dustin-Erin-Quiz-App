@@ -18,36 +18,41 @@ class Quiz {
 
   }
 
+  //Start Game function is working
   startGame() {
     this.asked = [];
     this.active = true;
-    TriviaApi.getQuestions() 
-      .then(res => {
+    const trivia = new TriviaApi();
+    trivia.getQuestions().then(res => {
         res.results.forEach(item => this.unasked.push(item));
       })
       .catch((err) => {
         console.log(err);
       })
   }
+  //this works
   moveQuestion() {
     this.asked.unshift(this.unasked.shift());
     console.log(this.asked);
     console.log(this.unasked);
   }
+//this works
   updateScoreHistory() {
     if (this.asked.length === 5) {
-      this.score.History.push(this.score);
+      this.scoreHistory.push(this.score);
     }
   }
+  //this works
   endGame() {
     this.active = false;
-
   }
-
+ //this works
   updateScore() {
-    if (this.asked[0].userAnswer === this.asked[0].correctAnswer) {
+    if (this.asked[0].userAnswer === this.asked[0].correct_answer) {
       this.score ++;
   }
+
+}
 
 }
 

@@ -1,15 +1,15 @@
 class TriviaApi {
-
-  constructor() {
-  this.BASE_URL = 'https://opentdb.com/api.php?amount=5&type=multiple';
-  }
+  static BASE_URL = 'https://opentdb.com/api.php?amount=5&type=multiple';
   
   getQuestions() {
-    fetch(`${BASE_URL}`)
-      .then(res => res.json())
+    return fetch(`${TriviaApi.BASE_URL}`)
+      .then(res => 
+      { 
+        return res.json();
+      })
       .catch((err) => {
         console.log(err);
-      })
+      });
   }
 
 }

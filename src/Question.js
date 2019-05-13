@@ -1,9 +1,9 @@
 class Question {
   constructor() {
-  this.text = '',
-  this.answers = [],
-  this.correctAnswer = '',
-  this.userAnswer = '';
+    this.text = '',
+    this.answers = [],
+    this.correctAnswer = '',
+    this.userAnswer = '';
   }
 
   submitAnswer(answer) {
