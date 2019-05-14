@@ -16,7 +16,6 @@ class Quiz extends Model{
     this.active = false;
     this.score = 0;
     this.scoreHistory = [0];
-
   }
 
   //Start Game function is working

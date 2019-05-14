@@ -1,0 +1,30 @@
+.status {
+  text-align:center;
+}
+
+.status-elements {
+  display: inline-block;
+  width: 33%;
+}
+
+.display{
+  text-align: center;
+  width: 50%;
+  margin: 30px 25%;
+}
+
+.title {
+  font-size: 24px;
+  /* width: 50%; */
+  margin: 10px;
+}
+
+label {
+  font-size: 16px;
+}
+
+.answers{
+  display:block;
+
+}
+

@@ -8,18 +8,19 @@ class QuizDisplay extends Renderer {
   */
   _generateIntro() {
     return `
-    <div>Welcome to our trivia quiz!</div>
+    <div class='title'>Welcome to our trivia quiz!</div>
+    <div class='title'>Test your smarts and see how high you can score</div>
     <button type="button" class="start-game">Start</button>
     `;
   }
 
   _generateAskQuestion(question) {
     return `
-  <div>
-    <p>${question.text}</p>
+  <div class='title'>
+    <p class='title'>${question.text}</p>
       <form>
         ${question.answers.map((answer, index) => {
-    return `<input type="radio" name="answer" value="${answer}" id="${index}" /> <label for ="${index}">${answer}</label>`;
+    return `<div class='answers'><input type="radio" name="answer" value="${answer}" id="${index}" /> <label for ="${index}">${answer}</label></div>`;
   }).join('')}
         <button type="submit">Submit</button>
       </form>
