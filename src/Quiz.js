@@ -21,17 +21,15 @@ class Quiz extends Model{
 
   //Start Game function is working
   startGame() {
-    this.asked = [];
     this.active = true;
     const trivia = new TriviaApi();
     trivia.getQuestions().then(res => {
         res.results.forEach(item => {
           let question = new Question();
           question.text = item.question;
-          question.answers = [item.correct_answer, ...item.incorrect_answers];
+          question.answers = [item.correct_answer, ...item.incorrect_answers].sort();
           question.correctAnswer = item.correct_answer;
           question.userAnswer = '';
-
           this.unasked.push(question);
         });
         this.asked.unshift(this.unasked.shift());
@@ -65,6 +63,10 @@ class Quiz extends Model{
   endGame() {
     this.active = false;
     this.score = 0;
+  }
+
+  restartGame() {
+    this.asked =[];
   }
  //this works
   updateScore() {

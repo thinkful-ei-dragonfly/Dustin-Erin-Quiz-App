@@ -6,21 +6,21 @@ class QuizDisplay extends Renderer {
   /**
   * This function must return an HTML string
   */
- _generateIntro() {
-   return `
+  _generateIntro() {
+    return `
     <div>Welcome to our trivia quiz!</div>
     <button type="button" class="start-game">Start</button>
-    `
- }
+    `;
+  }
 
- _generateAskQuestion(question) {
-  return `
+  _generateAskQuestion(question) {
+    return `
   <div>
     <p>${question.text}</p>
       <form>
         ${question.answers.map((answer, index) => {
-          return `<input type="radio" name="answer" value="${answer}" id="${index}" /> <label for ="${index}">${answer}</label>`;
-        }).join('')}
+    return `<input type="radio" name="answer" value="${answer}" id="${index}" /> <label for ="${index}">${answer}</label>`;
+  }).join('')}
         <button type="submit">Submit</button>
       </form>
     </div>`;
@@ -28,22 +28,35 @@ class QuizDisplay extends Renderer {
 
   _generateAnswerResponse() {
     if (this.model.asked[0].answerStatus() === 1) {
-    return `
+      return `
     <div>${this.model.asked[0].text}</div>
     <div>You got it! The correct answer was ${this.model.asked[0].correctAnswer}</div>
     <button type="button" class="next-question">Next</button>
-    `
+    `;
     } else {
       return `
       <div>${this.model.asked[0].text}</div>
       <div>You answered incorrectly.  Your answer was ${this.model.asked[0].userAnswer} and the correct answer was ${this.model.asked[0].correctAnswer}</div>
       <button type="button" class="next-question">Next</button>
-      `
+      `;
     }
   }
 
   _generateEndofGame() {
-    return `<div>End of Game</div>`
+    const scores = this.model.scoreHistory;
+    if (this.model.scoreHistory[0] === Math.max(...scores)) {
+      return `
+    <div>Great Job!</div>
+    <div>Your Final Score was ${this.model.scoreHistory[0]} out of 5</div>
+    <div>That's a new high score</div>
+    <button type ="button" class = "play-again">Play Again</button>
+    `;
+    }
+    else {
+      return `<div>Great Job!</div>
+    <div>Your Final Score was ${this.model.scoreHistory[0]} out of 5</div>
+    <button type ="button" class = "play-again">Play Again</button>`;
+    }
   }
 
   template() {
@@ -83,7 +96,8 @@ class QuizDisplay extends Renderer {
     return {
       'click .start-game': 'handleStartGame',
       'submit form': 'handleSubmitAnswer',
-      'click .next-question': 'handleMovetoNext'
+      'click .next-question': 'handleMovetoNext',
+      'click .play-again': 'handleRestart'
     };
   }
 
@@ -91,6 +105,11 @@ class QuizDisplay extends Renderer {
   * All event handler functions should call model methods, and end with
   * model.update()
   */ 
+  handleRestart() {
+    this.model.restartGame();
+    this.model.update();
+  }
+
   handleStartGame() {
     this.model.startGame();
     //this.model.update();
@@ -111,10 +130,10 @@ class QuizDisplay extends Renderer {
       this.model.endGame();
       this.model.update();
     } else {
-    this.model.nextQuestion();
-    this.model.update();
+      this.model.nextQuestion();
+      this.model.update();
+    }
   }
-}
 }
 
 export default QuizDisplay;
