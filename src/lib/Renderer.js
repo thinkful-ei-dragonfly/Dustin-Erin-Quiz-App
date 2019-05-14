@@ -28,6 +28,9 @@ class Renderer {
   }
 
   render() {
+    // if (!template) {
+    //   console.log('No template function');
+    //}
     this.$el.html(this.template());
   }
 }

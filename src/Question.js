@@ -3,7 +3,7 @@ class Question {
     this.text = '',
     this.answers = [],
     this.correctAnswer = '',
-    this.userAnswer = '';
+    this.userAnswer = null;
   }
 
   submitAnswer(answer) {

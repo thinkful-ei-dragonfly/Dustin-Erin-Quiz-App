@@ -1,20 +1,21 @@
 import Question from './Question';
 import TriviaApi from './TriviaApi';
+import Model from './lib/Model.js';
 
-class Quiz {
+class Quiz extends Model{
 
   static DEFAULT_QUIZ_LENGTH = 2;
 
   constructor() {
+    //look up the inheritance chain for the iherited class's constructor
+    super();
     // Array of Question instances
     this.unasked = [];
     // Array of Question instances
     this.asked = [];
     this.active = false;
     this.score = 0;
-    this.scoreHistory = [];
-
-    // TASK: Add more props here per the exercise
+    this.scoreHistory = [0];
 
   }
 
@@ -33,16 +34,26 @@ class Quiz {
 
           this.unasked.push(question);
         });
+        this.asked.unshift(this.unasked.shift());
+        this.update();
       })
       .catch((err) => {
         console.log(err);
       });
   };
+
+  getCurrentQuestion() {
+    return this.asked[0];
+  }
+
   //this works
-  moveQuestion() {
-    this.asked.unshift(this.unasked.shift());
-    console.log(this.asked);
-    console.log(this.unasked);
+  nextQuestion() {
+    if (!this.asked[0].userAnswer) {
+    console.log('Please provide an answer to the question');
+    }
+    else {
+      this.asked.unshift(this.unasked.shift());
+    }
   }
 //this works
   updateScoreHistory() {
@@ -57,7 +68,7 @@ class Quiz {
   }
  //this works
   updateScore() {
-    if (this.asked[0].userAnswer === this.asked[0].correct_answer) {
+    if (this.asked[0].userAnswer === this.asked[0].correctAnswer) {
       this.score ++;
   }
 
