@@ -58,7 +58,7 @@ class Quiz extends Model{
 //this works
   updateScoreHistory() {
     if (this.asked.length === 5) {
-      this.scoreHistory.push(this.score);
+      this.scoreHistory.unshift(this.score);
     }
   }
   //this works

@@ -42,6 +42,10 @@ class QuizDisplay extends Renderer {
     }
   }
 
+  _generateEndofGame() {
+    return `<div>End of Game</div>`
+  }
+
   template() {
     // if quiz is inactive and no questions are asked yet, then
     // we're at the intro state of app
@@ -59,7 +63,9 @@ class QuizDisplay extends Renderer {
       return this._generateAnswerResponse();
     }
 
-    if ()
+    if (!this.model.active && this.model.asked.length === 5) {
+      return this._generateEndofGame();
+    }
 
     else {
       return `
@@ -100,9 +106,15 @@ class QuizDisplay extends Renderer {
   }
 
   handleMovetoNext() {
+    if (this.model.unasked.length === 0) {
+      this.model.updateScoreHistory();
+      this.model.endGame();
+      this.model.update();
+    } else {
     this.model.nextQuestion();
     this.model.update();
   }
+}
 }
 
 export default QuizDisplay;
