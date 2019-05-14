@@ -30,14 +30,14 @@ class QuizDisplay extends Renderer {
   _generateAnswerResponse() {
     if (this.model.asked[0].answerStatus() === 1) {
       return `
-    <div>${this.model.asked[0].text}</div>
-    <div>You got it! The correct answer was ${this.model.asked[0].correctAnswer}</div>
+    <div class="title">${this.model.asked[0].text}</div>
+    <div class="title">You got it! The correct answer was <span class="correct">${this.model.asked[0].correctAnswer}</span></div>
     <button type="button" class="next-question">Next</button>
     `;
     } else {
       return `
-      <div>${this.model.asked[0].text}</div>
-      <div>You answered incorrectly.  Your answer was ${this.model.asked[0].userAnswer} and the correct answer was ${this.model.asked[0].correctAnswer}</div>
+      <div class="title">${this.model.asked[0].text}</div>
+      <div class="title">You answered incorrectly.  Your answer was <span class="incorrect">${this.model.asked[0].userAnswer}</span> and the correct answer was <span class="correct">${this.model.asked[0].correctAnswer}</span></div>
       <button type="button" class="next-question">Next</button>
       `;
     }
@@ -47,9 +47,9 @@ class QuizDisplay extends Renderer {
     const scores = this.model.scoreHistory;
     if (this.model.scoreHistory[0] === Math.max(...scores)) {
       return `
-    <div>Great Job!</div>
-    <div>Your Final Score was ${this.model.scoreHistory[0]} out of 5</div>
-    <div>That's a new high score</div>
+    <div class="title">Great Job!</div>
+    <div class="title">Your Final Score was ${this.model.scoreHistory[0]} out of 5</div>
+    <div class="title">That's a new high score</div>
     <button type ="button" class = "play-again">Play Again</button>
     `;
     }

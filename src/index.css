@@ -2,6 +2,7 @@
   text-align:center;
 }
 
+/* make sure elements don't move to next line */
 .status-elements {
   display: inline-block;
   width: 33%;
@@ -23,8 +24,24 @@ label {
   font-size: 16px;
 }
 
+/* how to align left? */
 .answers{
   display:block;
 
+}
+
+.correct {
+color: green;
+display: block;
+}
+
+.incorrect {
+color: red;
+display: block;
+}
+
+button {
+background-color: blue;
+color: white;
 }
 
