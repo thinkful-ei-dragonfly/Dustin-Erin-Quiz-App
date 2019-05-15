@@ -8,15 +8,15 @@ class QuizDisplay extends Renderer {
   */
   _generateIntro() {
     return `
-    <div class='title'>Welcome to our trivia quiz!</div>
-    <div class='title'>Test your smarts and see how high you can score</div>
+    <header class='title'><h1>Welcome to our trivia quiz!<h1></header>
+    <h2 class='title'>Test your smarts and see how high you can score</h2>
     <button type="button" class="start-game">Start</button>
     `;
   }
 
   _generateAskQuestion(question) {
     return `
-  <div class='title'>
+  <section class='title'>
     <p class='title'>${question.text}</p>
       <form>
         ${question.answers.map((answer, index) => {
@@ -24,20 +24,20 @@ class QuizDisplay extends Renderer {
   }).join('')}
         <button type="submit">Submit</button>
       </form>
-    </div>`;
+    </section>`;
   }
 
   _generateAnswerResponse() {
     if (this.model.asked[0].answerStatus() === 1) {
       return `
-    <div class="title">${this.model.asked[0].text}</div>
-    <div class="title">You got it! The correct answer was <span class="correct">${this.model.asked[0].correctAnswer}</span></div>
+    <h3 class="title">${this.model.asked[0].text}</h3>
+    <h3 class="title">You got it! The correct answer was <span class="correct">${this.model.asked[0].correctAnswer}</span></h3>
     <button type="button" class="next-question">Next</button>
     `;
     } else {
       return `
-      <div class="title">${this.model.asked[0].text}</div>
-      <div class="title">You answered incorrectly.  Your answer was <span class="incorrect">${this.model.asked[0].userAnswer}</span> and the correct answer was <span class="correct">${this.model.asked[0].correctAnswer}</span></div>
+      <h3 class="title">${this.model.asked[0].text}</h3>
+      <h3 class="title">You answered incorrectly.  Your answer was <span class="incorrect">${this.model.asked[0].userAnswer}</span> and the correct answer was <span class="correct">${this.model.asked[0].correctAnswer}</span></h3>
       <button type="button" class="next-question">Next</button>
       `;
     }
@@ -47,15 +47,15 @@ class QuizDisplay extends Renderer {
     const scores = this.model.scoreHistory;
     if (this.model.scoreHistory[0] === Math.max(...scores)) {
       return `
-    <div class="title">Great Job!</div>
-    <div class="title">Your Final Score was ${this.model.scoreHistory[0]} out of 5</div>
-    <div class="title">That's a new high score</div>
+    <h2 class="title">Great Job!</h2>
+    <h3 class="title">Your Final Score was ${this.model.scoreHistory[0]} out of 5</h3>
+    <h3 class="title">That's a new high score</h3>
     <button type ="button" class = "play-again">Play Again</button>
     `;
     }
     else {
-      return `<div>Great Job!</div>
-    <div>Your Final Score was ${this.model.scoreHistory[0]} out of 5</div>
+      return `<h3 class="title">Great Job!</h3>
+    <h3 class="title">Your Final Score was ${this.model.scoreHistory[0]} out of 5</h3>
     <button type ="button" class = "play-again">Play Again</button>`;
     }
   }
@@ -83,7 +83,7 @@ class QuizDisplay extends Renderer {
 
     else {
       return `
-      <div>Quiz default</div
+      <p>Quiz default</p>
       `;
     }
   }
@@ -118,6 +118,10 @@ class QuizDisplay extends Renderer {
 
   handleSubmitAnswer() {
     event.preventDefault();
+    if (!event.target.answer.value) {
+      alert('Please select an answer');
+      throw new Error('Please select an answer');
+    }
     this.model.asked[0].submitAnswer(event.target.answer.value);
     console.log(event.target.answer.value);
     //this.model.nextQuestion();

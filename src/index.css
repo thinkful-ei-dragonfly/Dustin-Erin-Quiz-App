@@ -1,17 +1,28 @@
+* {
+box-sizing: border-box;
+  }
+
 .status {
   text-align:center;
 }
 
-/* make sure elements don't move to next line */
 .status-elements {
   display: inline-block;
-  width: 33%;
+  width: 30%;
+}
+
+.div-1 {
+  text-align: left;
+}
+
+.div-3 {
+  text-align: right;
 }
 
 .display{
   text-align: center;
-  width: 50%;
-  margin: 30px 25%;
+  width: 70%;
+  margin: 30px 15%;
 }
 
 .title {
@@ -24,10 +35,11 @@ label {
   font-size: 16px;
 }
 
-/* how to align left? */
 .answers{
   display:block;
-
+  width: 70%;
+  margin-left: 35%;
+  text-align: left;
 }
 
 .correct {
@@ -43,5 +55,12 @@ display: block;
 button {
 background-color: blue;
 color: white;
+padding: 5px 15px;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: lightblue;
+  color: black;
 }
 
