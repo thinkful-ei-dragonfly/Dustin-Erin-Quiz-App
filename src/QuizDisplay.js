@@ -8,7 +8,7 @@ class QuizDisplay extends Renderer {
   */
   _generateIntro() {
     return `
-    <header class='title'><h1>Welcome to our trivia quiz!<h1></header>
+    <header class='title' role="banner"><h1>Welcome to our trivia quiz!<h1></header>
     <h2 class='title'>Test your smarts and see how high you can score</h2>
     <button type="button" class="start-game">Start</button>
     `;
@@ -16,7 +16,7 @@ class QuizDisplay extends Renderer {
 
   _generateAskQuestion(question) {
     return `
-  <section class='title'>
+  <section class='title' role="region">
     <p class='title'>${question.text}</p>
       <form>
         ${question.answers.map((answer, index) => {
