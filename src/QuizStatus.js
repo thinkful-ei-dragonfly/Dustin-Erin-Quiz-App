@@ -21,7 +21,6 @@ class QuizStatus extends Renderer {
     <div class='status-elements div-3'>Score = ${this.model.score}</div>
     `;}
   }
-
 }
 
 export default QuizStatus;
