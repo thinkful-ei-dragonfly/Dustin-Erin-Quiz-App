@@ -2,65 +2,179 @@
 box-sizing: border-box;
   }
 
-.status {
-  text-align:center;
+  body {
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+    margin: 0px;
+  }
+
+  .title {
+    margin: 0px;
+  }
+
+@media only screen and (max-width: 600px) {
+
+  .status {
+    text-align:center;
+    padding: 10px 0px;
+    background-color: rgb(233, 243, 233);
+  }
+  
+  .status-elements {
+    display: inline-block;
+    width: 30%;
+  }
+
+  div {
+    font-size: 14px;
+  }
+  
+  .div-1 {
+    text-align: left;
+  }
+  
+  .div-3 {
+    text-align: right;
+  }
+  
+  label {
+    font-size: 16px;
+  }
+  
+  .answers{
+    display:block;
+    width: 70%;
+    margin-left: auto;
+    text-align: left;
+  }
+  
+  .correct {
+  color: green;
+  display: block;
+  }
+  
+  .incorrect {
+  color: red;
+  display: block;
+  }
+  
+  button {
+  background-color: rgb(140, 182, 140);
+  color: white;
+  padding: 5px 15px;
+  border: 1px rgb(90, 104, 90) solid;
+  border-radius: 10px;
+  margin-top: 25px;
+  }
+  
+  button:hover {
+    cursor: pointer;
+    background-color: lightblue;
+    color: black;
+  }
+
+  h1 {
+    font-size: 26px;
+  }
+
+  h2.title, p.title {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .display {
+    width: 90%;
+    margin: 15% 5%;
+    text-align: center;
+    background-color: rgb(247, 241, 241);
+    border: 2px solid grey;
+    border-radius: 10px;
+    padding: 25px 10px;
+  }
+
+  .title {
+    margin: 0px;
+  }
+
 }
 
-.status-elements {
-  display: inline-block;
-  width: 30%;
-}
+@media only screen and (min-width: 600px) {
 
-.div-1 {
-  text-align: left;
-}
+  .status {
+    text-align: center;
+    padding: 10px 0px;
+    background-color: rgb(233, 243, 233);
+  }
 
-.div-3 {
-  text-align: right;
-}
+  .status-elements {
+    display: inline-block;
+    width: 30%;
+  }
 
-.display{
-  text-align: center;
-  width: 70%;
-  margin: 30px 15%;
-}
+  div {
+    padding: 10px 0px;
+    font-size: 20px;
+  }
 
-.title {
-  font-size: 24px;
-  /* width: 50%; */
-  margin: 10px;
-}
+  .div-1 {
+    text-align: left;
+  }
 
-label {
-  font-size: 16px;
-}
+  .div-3 {
+    text-align: right;
+  }
 
-.answers{
-  display:block;
-  width: 70%;
-  margin-left: 35%;
-  text-align: left;
-}
+  .display {
+    width: 75%;
+    margin: 10% 12.5%;
+    text-align: center;
+    background-color: rgb(247, 241, 241);
+    border: 2px solid grey;
+    border-radius: 10px;
+    padding: 25px 10px;
+  }
 
-.correct {
-color: green;
-display: block;
-}
+  .title {
+    font-size: 24px;
+    /* width: 50%; */
+    margin: 10px;
+  }
 
-.incorrect {
-color: red;
-display: block;
-}
+  label {
+    font-size: 16px;
+  }
 
-button {
-background-color: blue;
-color: white;
-padding: 5px 15px;
-}
+  .answers{
+    display:block;
+    width: 70%;
+    margin-left: auto;
+    text-align: left;
+    font-size: 16px;
+  }
 
-button:hover {
-  cursor: pointer;
-  background-color: lightblue;
-  color: black;
-}
+  .correct {
+    color: green;
+    display: block;
+  }
 
+  .incorrect {
+    color: red;
+    display: block;
+  }
+
+  button {
+    background-color: rgb(140, 182, 140);
+    color: white;
+    padding: 5px 15px;
+    border: 1px rgb(90, 104, 90) solid;
+    border-radius: 10px;
+    margin-top: 25px;
+  }
+
+  button:hover {
+    cursor: pointer;
+    background-color: lightblue;
+    color: black;
+  }
+
+}
